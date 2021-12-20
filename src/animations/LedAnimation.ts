@@ -1,4 +1,4 @@
-class LedConfig {
+export class LedConfig {
     leds: number;
     brightness: number;
     gpio = 18
@@ -10,7 +10,7 @@ class LedConfig {
 
 }
 
-abstract class LedAnimation {
+export abstract class LedAnimation {
 
     protected currentAnimation: NodeJS.Timer;
     protected static ledConfig: LedConfig;

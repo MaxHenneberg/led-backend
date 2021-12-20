@@ -2,17 +2,12 @@
 import ws281x from "rpi-ws281x";
 import express from "express";
 import RunningPixel from "./animations/RunningPixel";
+import {LedAnimation, LedConfig} from "./animations/LedAnimation";
 
 const app = express()
 const port = 3000
 
-let currentInterval: NodeJS.Timer;
-
 app.get('/', (req, res) => {
-    if(currentInterval){
-        clearInterval(currentInterval);
-    }
-
     res.send('Hello World!')
 
 })
