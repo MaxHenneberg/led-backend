@@ -48,7 +48,7 @@ class Bouncing extends LedAnimation {
         if (LedAnimation.currentAnimation) {
             clearInterval(LedAnimation.currentAnimation);
         }
-        LedAnimation.currentAnimation = setInterval((() => this.fillAnimation()), 50);
+        LedAnimation.currentAnimation = setInterval((() => this.fillAnimation()), 20);
     }
 }
 
