@@ -11,6 +11,14 @@ ws281x.configure(config);
 app.get('/', (req, res) => {
     res.send('Hello World!')
     var pixels = new Uint32Array(5);
+
+    // Create a fill color with red/green/blue.
+    var red = 255, green = 0, blue = 0;
+    var color = (red << 16) | (green << 8)| blue;
+
+    for (var i = 0; i < 5; i++)
+        pixels[i] = color;
+
     ws281x.render(pixels);
 })
 
