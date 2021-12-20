@@ -15,13 +15,16 @@ app.get('/', (req, res) => {
 
 
 offset = 0;
+x = 0.0;
+maxColor = 255;
 function loop() {
     var pixels = new Uint32Array(config.leds);
 
     // Create a fill color with red/green/blue.
-    var red = 255, green = 0, blue = 0;
-    var color = (red << 16) | (green << 8)| blue;
-    offset = (offset+1)%config.leds;
+    var red = Math.sin(x)*maxColor, green = Math.sin((x+0.5)%Math.PI)*maxColor, blue = Math.sin((x+1)%Math.PI)*maxColor;
+    var color = (red << 16) | (green << 8) | blue;
+    offset = (offset + 1) % config.leds;
+    x = (x + 0.2) % (Math.PI)
     pixels[offset] = color;
 
     ws281x.render(pixels);
