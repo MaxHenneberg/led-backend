@@ -19,13 +19,14 @@ export abstract class LedAnimation {
         LedAnimation.ledConfig = ledConfig;
     }
 
-    protected abstract animation():void;
+    protected abstract animation(): void;
 
     play(): void {
         if (this.currentAnimation) {
             clearInterval(this.currentAnimation);
         }
-        this.animation();
+        this.currentAnimation = setInterval((() => this.animation()), 100);
+
     }
 
 }
