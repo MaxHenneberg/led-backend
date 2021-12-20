@@ -7,6 +7,8 @@ import Bouncing from "./animations/Bouncing";
 
 const app = express()
 const port = 3000
+const bouncingAnimation = new Bouncing(255,0,0);
+
 
 app.get('/animation/runningPixel', (req, res) => {
     res.send('Running Pixel')
@@ -15,7 +17,7 @@ app.get('/animation/runningPixel', (req, res) => {
 
 app.get('/animation/bouncing', (req, res) => {
     res.send('Bouncing')
-    new Bouncing(255,0,0).play()
+    bouncingAnimation.play()
 })
 
 app.listen(port, () => {
