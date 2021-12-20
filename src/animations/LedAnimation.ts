@@ -19,7 +19,7 @@ export abstract class LedAnimation {
         LedAnimation.ledConfig = ledConfig;
     }
 
-    abstract animation():void;
+    protected abstract animation():void;
 
     play(): void {
         if (this.currentAnimation) {
