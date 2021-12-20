@@ -13,7 +13,7 @@ class RunningPixel extends LedAnimation {
     animation(): void {
         const pixels = new Uint32Array(LedAnimation.ledConfig.leds);
 
-        this.currentX = (this.currentX + 20) % Math.PI;
+        this.currentX = (this.currentX + 0.2) % Math.PI;
         this.currentPixel = (this.currentPixel + 1) % LedAnimation.ledConfig.leds;
         const red = Math.sin(this.currentX) * LedAnimation.ledConfig.brightness,
             green = Math.sin((this.currentX + 0.5) % Math.PI) * LedAnimation.ledConfig.brightness,
