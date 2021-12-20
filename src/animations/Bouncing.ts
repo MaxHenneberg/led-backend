@@ -3,7 +3,7 @@ import ws281x from "rpi-ws281x";
 import {LedAnimation} from "./LedAnimation";
 
 class Bouncing extends LedAnimation {
-    currentFill = LedAnimation.ledConfig.leds;
+    currentFill = 0;
     color: number;
 
     constructor(red: number, green: number, blue: number) {
