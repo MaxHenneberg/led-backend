@@ -21,7 +21,7 @@ app.get('/animation/bouncing', (req, res) => {
 })
 
 app.listen(port, () => {
-    const ledConfig = new LedConfig(50, 255)
+    const ledConfig = new LedConfig(100, 255)
     ws281x.configure(ledConfig);
     LedAnimation.configure(ledConfig)
     console.log(`Example app listening at http://localhost:${port}`)

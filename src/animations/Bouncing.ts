@@ -25,7 +25,7 @@ class Bouncing extends LedAnimation {
             ws281x.render(pixels);
         } else {
             LedAnimation.clearCurrentAnimation();
-            LedAnimation.currentAnimation = setInterval((() => this.emptyAnimation()), 100);
+            LedAnimation.currentAnimation = setInterval((() => this.emptyAnimation()), 50);
         }
 
 
@@ -49,7 +49,7 @@ class Bouncing extends LedAnimation {
 
     play() {
         LedAnimation.clearCurrentAnimation();
-        LedAnimation.currentAnimation = setInterval((() => this.fillAnimation()), 20);
+        LedAnimation.currentAnimation = setInterval((() => this.fillAnimation()), 5);
     }
 }
 
