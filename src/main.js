@@ -10,7 +10,7 @@ ws281x.configure(config);
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
-    setInterval(loop(), 100);
+    setInterval((() => loop()), 100);
 })
 
 
