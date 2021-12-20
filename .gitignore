@@ -129,3 +129,4 @@ dist
 
 .idea
 .
+src/spotifyController/spotifytoken.txt
