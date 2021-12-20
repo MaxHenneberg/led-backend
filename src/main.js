@@ -3,7 +3,7 @@ const ws281x = require('rpi-ws281x')
 const app = express()
 const port = 3000
 config = {};
-config.leds = 5;
+config.leds = 25;
 config.brightness = 255;
 config.gpio = 18
 ws281x.configure(config);
