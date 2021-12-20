@@ -4,6 +4,8 @@ import {LedAnimation} from "./LedAnimation";
 
 class Bouncing extends LedAnimation {
     currentFill = 0;
+    fillTime = 500;
+    emptyTime = 2000;
     color: number;
 
     constructor(red: number, green: number, blue: number) {
@@ -25,7 +27,7 @@ class Bouncing extends LedAnimation {
             ws281x.render(pixels);
         } else {
             LedAnimation.clearCurrentAnimation();
-            LedAnimation.currentAnimation = setInterval((() => this.emptyAnimation()), 50);
+            LedAnimation.currentAnimation = setInterval((() => this.emptyAnimation()), Math.round(this.emptyTime / LedAnimation.ledConfig.leds));
         }
 
 
@@ -49,7 +51,7 @@ class Bouncing extends LedAnimation {
 
     play() {
         LedAnimation.clearCurrentAnimation();
-        LedAnimation.currentAnimation = setInterval((() => this.fillAnimation()), 5);
+        LedAnimation.currentAnimation = setInterval((() => this.fillAnimation()), Math.round(this.fillTime / LedAnimation.ledConfig.leds));
     }
 }
 
