@@ -3,9 +3,9 @@ const ws281x = require('rpi-ws281x')
 const app = express()
 const port = 3000
 config = {};
-this.config.leds = 5;
-this.config.brightness = 255;
-this.config.gpio = 18
+config.leds = 5;
+config.brightness = 255;
+config.gpio = 18
 ws281x.configure(config);
 
 app.get('/', (req, res) => {
