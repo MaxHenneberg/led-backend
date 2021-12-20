@@ -1,17 +1,13 @@
 const express = require('express')
-const ws281x = require('rpi-ws281-x-native')
+const ws281x = require('rpi-ws281x')
 const app = express()
 const port = 3000
 
-const channel = ws281x(5, { stripType: 'ws2812' });
-
 app.get('/', (req, res) => {
     res.send('Hello World!')
-    const colorArray = channel.array;
-    for (let i = 0; i < channel.count; i++) {
-        colorsArray[i] = 0xffcc22;
-    }
-    ws281x.render();
+    ws281x.configure({leds:16});
+    var pixels = new Uint32Array(16);
+    ws281x.render(pixels);
 })
 
 app.listen(port, () => {
