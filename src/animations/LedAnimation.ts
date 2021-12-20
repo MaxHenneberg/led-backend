@@ -19,6 +19,12 @@ export abstract class LedAnimation {
         LedAnimation.ledConfig = ledConfig;
     }
 
+    static clearCurrentAnimation():void {
+        if (LedAnimation.currentAnimation){
+            clearInterval(LedAnimation.currentAnimation)
+        }
+    }
+
     protected abstract animation(): void;
 
     play(): void {

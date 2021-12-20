@@ -24,7 +24,7 @@ class Bouncing extends LedAnimation {
 
             ws281x.render(pixels);
         } else {
-            clearInterval(LedAnimation.currentAnimation)
+            LedAnimation.clearCurrentAnimation();
             LedAnimation.currentAnimation = setInterval((() => this.emptyAnimation()), 100);
         }
 
@@ -35,19 +35,20 @@ class Bouncing extends LedAnimation {
         const pixels = new Uint32Array(LedAnimation.ledConfig.leds);
         if (this.currentFill > 0) {
             this.currentFill--;
+            for (let i = 0; i < this.currentFill; i++) {
+                pixels[i] = this.color;
+            }
+
+            ws281x.render(pixels);
+        } else {
+            LedAnimation.clearCurrentAnimation();
         }
 
-        for (let i = 0; i < this.currentFill; i++) {
-            pixels[i] = this.color;
-        }
 
-        ws281x.render(pixels);
     }
 
     play() {
-        if (LedAnimation.currentAnimation) {
-            clearInterval(LedAnimation.currentAnimation);
-        }
+        LedAnimation.clearCurrentAnimation();
         LedAnimation.currentAnimation = setInterval((() => this.fillAnimation()), 20);
     }
 }
