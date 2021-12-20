@@ -5,7 +5,7 @@ import {LedAnimation} from "./LedAnimation";
 class Bouncing extends LedAnimation {
     currentFill = 0;
     fillTime = 200;
-    emptyTime = 1000;
+    emptyTime = 700;
     color: number;
 
     constructor(red: number, green: number, blue: number) {
@@ -18,6 +18,7 @@ class Bouncing extends LedAnimation {
 
     fillAnimation(): void {
         const pixels = new Uint32Array(LedAnimation.ledConfig.leds);
+
         if (this.currentFill < LedAnimation.ledConfig.leds) {
             this.currentFill++;
             for (let i = 0; i < this.currentFill; i++) {

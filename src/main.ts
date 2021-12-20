@@ -17,7 +17,8 @@ app.get('/animation/runningPixel', (req, res) => {
 
 app.get('/animation/bouncing', (req, res) => {
     res.send('Bouncing')
-    bouncingAnimation.play()
+    setInterval(() => bouncingAnimation.play(), 508);
+
 })
 
 app.listen(port, () => {
