@@ -7,7 +7,7 @@ import Bouncing from "./animations/Bouncing";
 
 const app = express()
 const port = 3000
-const bouncingAnimation = new Bouncing(255,0,0);
+const bouncingAnimation = new Bouncing(144,0,0);
 
 
 app.get('/animation/runningPixel', (req, res) => {
@@ -21,7 +21,7 @@ app.get('/animation/bouncing', (req, res) => {
 })
 
 app.listen(port, () => {
-    const ledConfig = new LedConfig(100, 255)
+    const ledConfig = new LedConfig(150, 255)
     ws281x.configure(ledConfig);
     LedAnimation.configure(ledConfig)
     console.log(`Example app listening at http://localhost:${port}`)
