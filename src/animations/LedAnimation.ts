@@ -1,7 +1,8 @@
 export class LedConfig {
     leds: number;
     brightness: number;
-    gpio = 18
+    gpio = 18;
+    stripType = 'grb';
 
     constructor(leds: number, brightness: number) {
         this.leds = leds;
