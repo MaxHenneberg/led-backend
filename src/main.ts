@@ -3,13 +3,19 @@ import ws281x from "rpi-ws281x";
 import express from "express";
 import RunningPixel from "./animations/RunningPixel";
 import {LedAnimation, LedConfig} from "./animations/LedAnimation";
+import Bouncing from "./animations/Bouncing";
 
 const app = express()
 const port = 3000
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
+app.get('/animation/runningPixel', (req, res) => {
+    res.send('Running Pixel')
     new RunningPixel().play()
+})
+
+app.get('/animation/bouncing', (req, res) => {
+    res.send('Bouncing')
+    new Bouncing(255,0,0).play()
 })
 
 app.listen(port, () => {
