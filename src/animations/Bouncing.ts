@@ -7,10 +7,16 @@ class Bouncing extends LedAnimation {
     fillTime = 144;
     emptyTime = 288;
     color: number;
+    red: number;
+    green: number;
+    blue: number;
 
     constructor(red: number, green: number, blue: number) {
         super();
         this.color = (red << 16) | (green << 8) | blue;
+        this.red = red;
+        this.green = green;
+        this.blue = blue;
     }
 
     animation(): void {
@@ -25,7 +31,8 @@ class Bouncing extends LedAnimation {
             }
 
             for (let i = 0; i < 4 && this.currentFill + i < LedAnimation.ledConfig.leds; i++) {
-                pixels[this.currentFill + i] = this.color * (1 / (i + 2))
+                const factor = (1 / (i + 2));
+                pixels[this.currentFill + i] = (Math.round(this.red * factor) << 16) | (Math.round(this.green * factor) << 8) | Math.round(this.blue * factor);
             }
 
             ws281x.render(pixels);
@@ -46,7 +53,8 @@ class Bouncing extends LedAnimation {
             }
 
             for (let i = 0; i < 4 && this.currentFill + i < LedAnimation.ledConfig.leds; i++) {
-                pixels[this.currentFill + i] = this.color * (1 / (i + 2))
+                const factor = (1 / (i + 2));
+                pixels[this.currentFill + i] = (Math.round(this.red * factor) << 16) | (Math.round(this.green * factor) << 8) | Math.round(this.blue * factor);
             }
 
             ws281x.render(pixels);
