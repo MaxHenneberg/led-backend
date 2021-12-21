@@ -26,7 +26,7 @@ class Bouncing extends LedAnimation {
         const pixels = new Uint32Array(LedAnimation.ledConfig.leds);
         if (this.currentFill < LedAnimation.ledConfig.leds) {
             this.currentFill = this.currentFill + 4;
-            for (let i = 0; i < this.currentFill; i++) {
+            for (let i = 0; i < this.currentFill - 10; i++) {
                 pixels[i] = this.color;
             }
 

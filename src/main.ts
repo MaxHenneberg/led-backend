@@ -7,7 +7,7 @@ import Bouncing from "./animations/Bouncing";
 
 const app = express()
 const port = 3000
-const bouncingAnimation = new Bouncing(144,0,0);
+const bouncingAnimation = new Bouncing(144, 0, 0);
 
 
 app.get('/animation/runningPixel', (req, res) => {
@@ -19,6 +19,10 @@ app.get('/animation/bouncing', (req, res) => {
     res.send('Bouncing')
     setInterval(() => bouncingAnimation.play(), 2000);
 
+})
+
+app.post('/bpm', (req, res) => {
+    console.log(req.body);
 })
 
 app.listen(port, () => {
