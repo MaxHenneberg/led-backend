@@ -24,6 +24,10 @@ class Bouncing extends LedAnimation {
                 pixels[i] = this.color;
             }
 
+            for (let i = 0; i < 4 && this.currentFill + i < LedAnimation.ledConfig.leds; i++) {
+                pixels[this.currentFill + i] = this.color * (1 / (i + 2))
+            }
+
             ws281x.render(pixels);
         } else {
             LedAnimation.clearCurrentAnimation();
@@ -39,6 +43,10 @@ class Bouncing extends LedAnimation {
             this.currentFill = this.currentFill - 2;
             for (let i = 0; i < this.currentFill; i++) {
                 pixels[i] = this.color;
+            }
+
+            for (let i = 0; i < 4 && this.currentFill + i < LedAnimation.ledConfig.leds; i++) {
+                pixels[this.currentFill + i] = this.color * (1 / (i + 2))
             }
 
             ws281x.render(pixels);
