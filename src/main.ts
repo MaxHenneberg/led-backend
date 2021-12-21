@@ -23,8 +23,10 @@ app.get('/animation/bouncing', (req, res) => {
 })
 
 app.post('/bpm', (req, res) => {
-    setInterval(() => bouncingAnimation.play(), Math.round(60000.0 * (60 / req.body.bpm)));
-    console.log(req.body);
+    const interval = Math.round(60000.0 * (60 / req.body.bpm));
+    console.log(interval)
+    setInterval(() => bouncingAnimation.play(), interval);
+    res.send(req.body.bpm);
 })
 
 app.listen(port, () => {
