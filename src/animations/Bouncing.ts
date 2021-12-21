@@ -4,8 +4,8 @@ import {LedAnimation} from "./LedAnimation";
 
 class Bouncing extends LedAnimation {
     currentFill = 0;
-    fillTime = 144;
-    emptyTime = 288;
+    fillTime = 800;
+    emptyTime = 1600;
     color: number;
     red: number;
     green: number;
