@@ -6,6 +6,7 @@ import {LedAnimation, LedConfig} from "./animations/LedAnimation";
 import Bouncing from "./animations/Bouncing";
 
 const app = express()
+app.use(express.json())
 const port = 3000
 const bouncingAnimation = new Bouncing(144, 0, 0);
 
