@@ -39,7 +39,7 @@ app.get('/animation/christmas', (req, res) => {
     runningColor.play();
 });
 
-app.get('/animation/christmas', (req, res) => {
+app.get('/animation/dechiColor', (req, res) => {
     res.send('Running Pixel')
     runningColor.setNewColors([Utils.toColor(155, 0, 0), Utils.toColor(155, 100, 0), Utils.toColor(69, 67, 67)]);
     runningColor.play();
