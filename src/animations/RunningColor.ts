@@ -1,13 +1,13 @@
 import {LedAnimation} from "./LedAnimation";
 
 export class RunningColor extends LedAnimation {
-
-    private pixels = new Uint32Array(LedAnimation.ledConfig.leds);
+    private pixels: Uint32Array;
     private colors: number[];
     private offset: number;
 
     constructor(interval: number, colors: number[]) {
         super();
+        this.pixels = new Uint32Array(LedAnimation.ledConfig.leds);
         this.interval = interval;
         this.colors = colors;
         this.offset = 0;

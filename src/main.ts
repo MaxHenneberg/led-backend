@@ -17,32 +17,32 @@ const runningColor = new RunningColor(200, [Utils.toColor(255, 0, 0), Utils.toCo
 app.get('/animation/runningPixel', (req, res) => {
     res.send('Running Pixel')
     new RunningPixel().play()
-})
+});
 
 app.get('/animation/blitz', (req, res) => {
     res.send('Running Pixel')
     runningColor.setNewColors([Utils.toColor(255, 255, 0), Utils.toColor(0, 0, 0)])
     runningColor.play()
-})
+});
 
 app.get('/animation/christmas', (req, res) => {
     res.send('Running Pixel')
     runningColor.setNewColors([Utils.toColor(255, 0, 0), Utils.toColor(0, 255, 0)]);
     runningColor.play()
-})
+});
 
 app.get('/animation/bouncing', (req, res) => {
     res.send('Bouncing')
     setInterval(() => bouncingAnimation.play(), 2000);
 
-})
+});
 
 app.post('/bpm', (req, res) => {
     const interval = Math.round(1000.0 * (60 / req.body.bpm));
     console.log(interval)
     setInterval(() => bouncingAnimation.play(), interval);
     res.send(req.body.bpm);
-})
+});
 
 app.listen(port, () => {
     const ledConfig = new LedConfig(150, 255)
