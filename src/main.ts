@@ -23,13 +23,13 @@ app.get('/animation/runningPixel', (req, res) => {
 
 app.get('/animation/blitz', (req, res) => {
     res.send('Running Pixel')
-    runningColor.setNewColors([Utils.toColor(255, 255, 0), Utils.toColor(0, 0, 0)]);
+    runningColor.setNewColors([Utils.toColor(155, 100, 0), Utils.toColor(0, 0, 0)]);
     runningColor.play();
 });
 
 app.get('/animation/christmas', (req, res) => {
     res.send('Running Pixel')
-    runningColor.setNewColors([Utils.toColor(255, 0, 0), Utils.toColor(0, 255, 0)]);
+    runningColor.setNewColors([Utils.toColor(155, 0, 0), Utils.toColor(0, 155, 0)]);
     runningColor.play();
 });
 
