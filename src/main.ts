@@ -10,6 +10,8 @@ import {Utils} from "./animations/Utils";
 const app = express()
 app.use(express.json())
 const port = 3000
+const ledConfig = new LedConfig(150, 255);
+LedAnimation.configure(ledConfig);
 const bouncingAnimation = new Bouncing(144, 0, 0);
 const runningColor = new RunningColor(200, [Utils.toColor(255, 0, 0), Utils.toColor(0, 255, 0)]);
 
@@ -45,8 +47,6 @@ app.post('/bpm', (req, res) => {
 });
 
 app.listen(port, () => {
-    const ledConfig = new LedConfig(150, 255)
     ws281x.configure(ledConfig);
-    LedAnimation.configure(ledConfig)
     console.log(`Example app listening at http://localhost:${port}`)
 })
