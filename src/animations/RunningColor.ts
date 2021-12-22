@@ -1,4 +1,5 @@
 import {LedAnimation} from "./LedAnimation";
+// @ts-ignore
 import ws281x from "rpi-ws281x";
 
 export class RunningColor extends LedAnimation {
