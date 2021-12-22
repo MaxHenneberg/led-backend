@@ -33,6 +33,18 @@ app.get('/animation/christmas', (req, res) => {
     runningColor.play();
 });
 
+app.get('/animation/christmas', (req, res) => {
+    res.send('Running Pixel')
+    runningColor.setNewColors([Utils.toColor(155, 0, 0), Utils.toColor(0, 155, 0)]);
+    runningColor.play();
+});
+
+app.get('/animation/christmas', (req, res) => {
+    res.send('Running Pixel')
+    runningColor.setNewColors([Utils.toColor(155, 0, 0), Utils.toColor(155, 100, 0), Utils.toColor(69, 67, 67)]);
+    runningColor.play();
+});
+
 app.get('/animation/bouncing', (req, res) => {
     res.send('Bouncing')
     setInterval(() => bouncingAnimation.play(), 2000);
