@@ -55,6 +55,7 @@ app.post('/bpm', (req, res) => {
     const interval = Math.round(1000.0 * (60 / req.body.bpm));
     console.log(interval)
     runningColor.setInterval(interval);
+    //test
     runningColor.setNewColors([Utils.toColor(155, 100, 0), Utils.toColor(0, 0, 0)]);
     runningColor.play();
     res.send(req.body.bpm);
