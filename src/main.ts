@@ -18,19 +18,19 @@ const runningColor = new RunningColor(200, [Utils.toColor(255, 0, 0), Utils.toCo
 
 app.get('/animation/runningPixel', (req, res) => {
     res.send('Running Pixel')
-    new RunningPixel().play()
+    new RunningPixel().play();
 });
 
 app.get('/animation/blitz', (req, res) => {
     res.send('Running Pixel')
-    runningColor.setNewColors([Utils.toColor(255, 255, 0), Utils.toColor(0, 0, 0)])
-    runningColor.play()
+    runningColor.setNewColors([Utils.toColor(255, 255, 0), Utils.toColor(0, 0, 0)]);
+    runningColor.play();
 });
 
 app.get('/animation/christmas', (req, res) => {
     res.send('Running Pixel')
     runningColor.setNewColors([Utils.toColor(255, 0, 0), Utils.toColor(0, 255, 0)]);
-    runningColor.play()
+    runningColor.play();
 });
 
 app.get('/animation/bouncing', (req, res) => {

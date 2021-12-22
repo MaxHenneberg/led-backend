@@ -1,4 +1,5 @@
 import {LedAnimation} from "./LedAnimation";
+import ws281x from "rpi-ws281x";
 
 export class RunningColor extends LedAnimation {
     private pixels: Uint32Array;
@@ -25,6 +26,8 @@ export class RunningColor extends LedAnimation {
         if (this.offset == this.colors.length) {
             this.offset = 0;
         }
+
+        ws281x.render(this.pixels);
     }
 
 }
