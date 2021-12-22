@@ -19,6 +19,10 @@ export class RunningColor extends LedAnimation {
         this.colors = colors;
     }
 
+    public setInterval(interval: number): void {
+        this.interval = interval;
+    }
+
     protected animation(): void {
         for (let i = 0; i < LedAnimation.ledConfig.leds; i++) {
             this.pixels[i] = this.colors[(i + this.offset) % this.colors.length];
