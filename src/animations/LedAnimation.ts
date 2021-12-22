@@ -16,6 +16,13 @@ export abstract class LedAnimation {
     protected static currentAnimation: NodeJS.Timer;
     protected static ledConfig: LedConfig;
 
+    protected interval: number;
+
+    constructor() {
+        this.interval = 100;
+    }
+
+
     static configure(ledConfig: LedConfig) {
         LedAnimation.ledConfig = ledConfig;
     }
@@ -32,7 +39,7 @@ export abstract class LedAnimation {
         if (LedAnimation.currentAnimation) {
             clearInterval(LedAnimation.currentAnimation);
         }
-        LedAnimation.currentAnimation = setInterval((() => this.animation()), 100);
+        LedAnimation.currentAnimation = setInterval((() => this.animation()), this.interval);
 
     }
 

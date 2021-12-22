@@ -1,6 +1,7 @@
 // @ts-ignore
 import ws281x from "rpi-ws281x";
 import {LedAnimation} from "./LedAnimation";
+import {Utils} from "./Utils";
 
 class Bouncing extends LedAnimation {
     currentFill = 0;
@@ -13,7 +14,7 @@ class Bouncing extends LedAnimation {
 
     constructor(red: number, green: number, blue: number) {
         super();
-        this.color = (red << 16) | (green << 8) | blue;
+        this.color = Utils.toColor(red, green, blue);
         this.red = red;
         this.green = green;
         this.blue = blue;
