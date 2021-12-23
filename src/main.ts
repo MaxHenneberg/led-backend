@@ -21,6 +21,12 @@ app.get('/animation/runningPixel', (req, res) => {
     new RunningPixel().play();
 });
 
+app.get('/animation/christmasTree', (req, res) => {
+    res.send('Running Pixel')
+    runningColor.setNewColors([Utils.toColor(160, 29, 204), Utils.toColor(168, 168, 168)]);
+    runningColor.play();
+});
+
 app.get('/animation/blitz', (req, res) => {
     res.send('Running Pixel')
     runningColor.setNewColors([Utils.toColor(155, 100, 0), Utils.toColor(0, 0, 0)]);
