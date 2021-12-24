@@ -5,8 +5,8 @@ import RunningPixel from "./animations/RunningPixel";
 import {LedAnimation, LedConfig} from "./animations/LedAnimation";
 import Bouncing from "./animations/Bouncing";
 import {RunningColor} from "./animations/RunningColor";
-import {Utils} from "./animations/Utils";
 import {Pulse} from "./animations/Pulse";
+import {ColorUtils} from "./animations/ColorUtils";
 
 const app = express()
 app.use(express.json())
@@ -14,7 +14,7 @@ const port = 3000
 const ledConfig = new LedConfig(150, 255);
 LedAnimation.configure(ledConfig);
 const bouncingAnimation = new Bouncing(144, 0, 0);
-const runningColor = new RunningColor(200, [Utils.toColor(255, 0, 0), Utils.toColor(0, 255, 0)]);
+const runningColor = new RunningColor(200, [ColorUtils.toColor(255, 0, 0), ColorUtils.toColor(0, 255, 0)]);
 const pulse = new Pulse(255, 0, 0);
 
 app.get('/animation/runningPixel', (req, res) => {
@@ -24,31 +24,31 @@ app.get('/animation/runningPixel', (req, res) => {
 
 app.get('/animation/christmasTree', (req, res) => {
     res.send('Running Pixel')
-    runningColor.setNewColors([Utils.toColor(80, 15, 102), Utils.toColor(80, 15, 102), Utils.toColor(84, 84, 84), Utils.toColor(84, 84, 84)]);
+    runningColor.setNewColors([ColorUtils.toColor(80, 15, 102), ColorUtils.toColor(80, 15, 102), ColorUtils.toColor(84, 84, 84), ColorUtils.toColor(84, 84, 84)]);
     runningColor.play();
 });
 
 app.get('/animation/blitz', (req, res) => {
     res.send('Running Pixel')
-    runningColor.setNewColors([Utils.toColor(155, 100, 0), Utils.toColor(0, 0, 0)]);
+    runningColor.setNewColors([ColorUtils.toColor(155, 100, 0), ColorUtils.toColor(0, 0, 0)]);
     runningColor.play();
 });
 
 app.get('/animation/christmas', (req, res) => {
     res.send('Running Pixel')
-    runningColor.setNewColors([Utils.toColor(155, 0, 0), Utils.toColor(0, 155, 0)]);
+    runningColor.setNewColors([ColorUtils.toColor(155, 0, 0), ColorUtils.toColor(0, 155, 0)]);
     runningColor.play();
 });
 
 app.get('/animation/christmas', (req, res) => {
     res.send('Running Pixel')
-    runningColor.setNewColors([Utils.toColor(155, 0, 0), Utils.toColor(0, 155, 0)]);
+    runningColor.setNewColors([ColorUtils.toColor(155, 0, 0), ColorUtils.toColor(0, 155, 0)]);
     runningColor.play();
 });
 
 app.get('/animation/dechiColor', (req, res) => {
     res.send('Running Pixel')
-    runningColor.setNewColors([Utils.toColor(155, 0, 0), Utils.toColor(155, 100, 0), Utils.toColor(69, 67, 67)]);
+    runningColor.setNewColors([ColorUtils.toColor(155, 0, 0), ColorUtils.toColor(155, 100, 0), ColorUtils.toColor(69, 67, 67)]);
     runningColor.play();
 });
 
@@ -63,7 +63,7 @@ app.post('/bpm', (req, res) => {
     console.log(interval)
     runningColor.setInterval(interval);
     //test
-    runningColor.setNewColors([Utils.toColor(155, 100, 0), Utils.toColor(0, 0, 0)]);
+    runningColor.setNewColors([ColorUtils.toColor(155, 100, 0), ColorUtils.toColor(0, 0, 0)]);
     runningColor.play();
     res.send(req.body.bpm);
 });
