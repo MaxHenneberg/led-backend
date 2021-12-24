@@ -15,7 +15,7 @@ export class AnimationPlayer {
         this.clearCurrentlyPlayingAnimation();
         this.currentPlayingAnimation = animation;
         this.currentTimer = setInterval(() => {
-            if (this.currentPlayingAnimation && this.currentPlayingAnimation.play()) {
+            if (this.currentPlayingAnimation.play()) {
                 this.clearCurrentlyPlayingAnimation();
             }
         }, interval);
@@ -24,7 +24,7 @@ export class AnimationPlayer {
     public repeatAnimation(animation: LedAnimation, intervalAniamtion: number, intervalRepeat: number) {
         this.clearRepeatTimer();
         this.currentRepeatTimer = setInterval(
-            () => this.playInLoop(this.currentPlayingAnimation, intervalAniamtion), intervalRepeat)
+            () => this.playInLoop(animation, intervalAniamtion), intervalRepeat)
     }
 
     private clearCurrentlyPlayingAnimation() {
