@@ -27,6 +27,7 @@ export class Pulse extends StatefulAnimation {
 
     protected animation(): void {
         const sinProgress = Math.min(1, (0.1 + Math.sin(this.progress % Math.PI)));
+        console.log(sinProgress);
         const pixels = new Uint32Array(LedAnimation.ledConfig.leds);
         const color = ColorUtils.toColor(
             Math.round(this.red * sinProgress),
@@ -38,6 +39,7 @@ export class Pulse extends StatefulAnimation {
         this.progress += 0.1;
 
         if (this.progress > (Math.PI * 3) / 4) {
+            console.log('finished');
             this.clearCurrentAnimation();
         }
     }
