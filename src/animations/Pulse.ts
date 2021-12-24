@@ -26,7 +26,7 @@ export class Pulse extends StatefulAnimation {
     }
 
     protected animation(): void {
-        const sinProgress = Math.sin(this.progress % Math.PI));
+        const sinProgress = Math.sin(this.progress % Math.PI);
         console.log(sinProgress);
         const pixels = new Uint32Array(LedAnimation.ledConfig.leds);
         const color = ColorUtils.toColor(
