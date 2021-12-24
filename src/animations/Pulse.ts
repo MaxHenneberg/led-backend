@@ -17,6 +17,7 @@ export class Pulse extends StatefulAnimation {
         this.green = green;
         this.blue = blue;
         this.progress = Math.PI * 0.1;
+        this.interval = 50;
     }
 
     public setColor(red: number, green: number, blue: number) {
@@ -36,9 +37,9 @@ export class Pulse extends StatefulAnimation {
 
         ColorUtils.fillArray(color, LedAnimation.ledConfig.leds, pixels);
         ws281x.render(pixels);
-        this.progress += 0.1;
+        this.progress += 0.2;
 
-        if (this.progress > Math.PI) {
+        if (this.progress > (Math.PI * 0.9)) {
             console.log('finished');
             this.clearCurrentAnimation();
         }
