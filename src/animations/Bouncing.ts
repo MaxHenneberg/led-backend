@@ -11,6 +11,8 @@ class Bouncing extends LedAnimation {
     red: number;
     green: number;
     blue: number;
+    currentAnimation: Function;
+    done: boolean;
 
     constructor(red: number, green: number, blue: number) {
         super();
@@ -18,9 +20,8 @@ class Bouncing extends LedAnimation {
         this.red = red;
         this.green = green;
         this.blue = blue;
-    }
-
-    animation(): void {
+        this.currentAnimation = this.fillAnimation;
+        this.done = false;
     }
 
     fillAnimation(): void {
@@ -38,8 +39,7 @@ class Bouncing extends LedAnimation {
 
             ws281x.render(pixels);
         } else {
-            this.clearCurrentAnimation();
-            LedAnimation.currentAnimation = setInterval((() => this.emptyAnimation()), Math.round(this.emptyTime / LedAnimation.ledConfig.leds));
+            this.currentAnimation = this.emptyAnimation;
         }
 
 
@@ -60,15 +60,19 @@ class Bouncing extends LedAnimation {
 
             ws281x.render(pixels);
         } else {
-            this.clearCurrentAnimation();
+            this.currentAnimation = null;
+            this.done = true;
         }
 
 
     }
 
+    public onClear() {
+    }
+
     play() {
-        this.clearCurrentAnimation();
-        LedAnimation.currentAnimation = setInterval((() => this.fillAnimation()), Math.round(this.fillTime / LedAnimation.ledConfig.leds));
+        this.currentAnimation();
+        return this.done;
     }
 }
 

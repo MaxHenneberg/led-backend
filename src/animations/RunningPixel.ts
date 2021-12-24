@@ -2,7 +2,7 @@
 import ws281x from "rpi-ws281x";
 import {LedAnimation} from "./LedAnimation";
 
-class RunningPixel extends LedAnimation {
+export class RunningPixel extends LedAnimation {
     currentPixel = 0;
     currentX = 0.0
 
@@ -10,7 +10,7 @@ class RunningPixel extends LedAnimation {
         super();
     }
 
-    animation(): void {
+    public play(): boolean {
         const pixels = new Uint32Array(LedAnimation.ledConfig.leds);
 
         this.currentX = (this.currentX + 0.2) % Math.PI;
@@ -22,7 +22,10 @@ class RunningPixel extends LedAnimation {
 
 
         ws281x.render(pixels);
+        return false;
+    }
+
+    public onClear() {
+        this.currentX = 0;
     }
 }
-
-export default RunningPixel;

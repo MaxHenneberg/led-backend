@@ -23,7 +23,7 @@ export class RunningColor extends LedAnimation {
         this.interval = interval;
     }
 
-    protected animation(): void {
+    public play(): boolean {
         for (let i = 0; i < LedAnimation.ledConfig.leds; i++) {
             this.pixels[i] = this.colors[(i + this.offset) % this.colors.length];
         }
@@ -33,6 +33,11 @@ export class RunningColor extends LedAnimation {
         }
 
         ws281x.render(this.pixels);
+        return false;
+    }
+
+    public onClear() {
+        this.offset = 0;
     }
 
 }

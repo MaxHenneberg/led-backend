@@ -2,9 +2,8 @@ import {LedAnimation, LedConfig} from "./LedAnimation";
 import {ColorUtils} from "./ColorUtils";
 // @ts-ignore
 import ws281x from "rpi-ws281x";
-import {StatefulAnimation} from "./StatefulAnimation";
 
-export class Pulse extends StatefulAnimation {
+export class Pulse extends LedAnimation {
 
     red: number;
     green: number;
@@ -26,7 +25,7 @@ export class Pulse extends StatefulAnimation {
         this.blue = blue;
     }
 
-    protected animation(): void {
+    public play(): boolean {
         const sinProgress = Math.sin(this.progress % Math.PI);
         console.log(sinProgress);
         const pixels = new Uint32Array(LedAnimation.ledConfig.leds);
@@ -41,11 +40,13 @@ export class Pulse extends StatefulAnimation {
 
         if (this.progress > (Math.PI * 0.9)) {
             console.log('finished');
-            this.clearCurrentAnimation();
+            return true;
+        }else{
+            return false;
         }
     }
 
-    protected resetState() {
+    public onClear() {
         this.progress = Math.PI * 0.1;
     }
 
