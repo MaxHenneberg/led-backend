@@ -1,6 +1,7 @@
 import {LedAnimation} from "./LedAnimation";
 
 export class AnimationPlayer {
+    private currentRepeatTimer: NodeJS.Timer;
     private currentTimer: NodeJS.Timer;
     private currentPlayingAnimation: LedAnimation;
 
@@ -20,10 +21,22 @@ export class AnimationPlayer {
         }, interval);
     }
 
+    public repeatAnimation(animation: LedAnimation, intervalAniamtion: number, intervalRepeat: number) {
+        this.clearRepeatTimer();
+        this.currentRepeatTimer = setInterval(
+            () => this.playInLoop(this.currentPlayingAnimation, intervalAniamtion), intervalRepeat)
+    }
+
     private clearCurrentlyPlayingAnimation() {
         if (this.currentTimer) {
             clearInterval(this.currentTimer);
             this.currentPlayingAnimation.onClear();
+        }
+    }
+
+    private clearRepeatTimer() {
+        if (this.currentRepeatTimer) {
+            clearInterval(this.currentRepeatTimer);
         }
     }
 

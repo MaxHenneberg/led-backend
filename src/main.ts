@@ -29,35 +29,35 @@ app.get('/animation/christmasTree', (req, res) => {
     res.send('Running Pixel')
     const runningColor = new RunningColor(200, [ColorUtils.toColor(255, 0, 0), ColorUtils.toColor(0, 255, 0)]);
     runningColor.setNewColors([ColorUtils.toColor(80, 15, 102), ColorUtils.toColor(80, 15, 102), ColorUtils.toColor(84, 84, 84), ColorUtils.toColor(84, 84, 84)]);
-    animationPlayer.playInLoop(runningColor, 100);
+    animationPlayer.playInLoop(runningColor, 300);
 });
 
 app.get('/animation/blitz', (req, res) => {
     res.send('Running Pixel')
     const runningColor = new RunningColor(200, [ColorUtils.toColor(255, 0, 0), ColorUtils.toColor(0, 255, 0)]);
     runningColor.setNewColors([ColorUtils.toColor(155, 100, 0), ColorUtils.toColor(0, 0, 0)]);
-    animationPlayer.playInLoop(runningColor, 100);
+    animationPlayer.playInLoop(runningColor, 300);
 });
 
 app.get('/animation/christmas', (req, res) => {
     res.send('Running Pixel')
     const runningColor = new RunningColor(200, [ColorUtils.toColor(255, 0, 0), ColorUtils.toColor(0, 255, 0)]);
     runningColor.setNewColors([ColorUtils.toColor(155, 0, 0), ColorUtils.toColor(0, 155, 0)]);
-    animationPlayer.playInLoop(runningColor, 100);
+    animationPlayer.playInLoop(runningColor, 300);
 });
 
 app.get('/animation/christmas', (req, res) => {
     res.send('Running Pixel')
     const runningColor = new RunningColor(200, [ColorUtils.toColor(255, 0, 0), ColorUtils.toColor(0, 255, 0)]);
     runningColor.setNewColors([ColorUtils.toColor(155, 0, 0), ColorUtils.toColor(0, 155, 0)]);
-    animationPlayer.playInLoop(runningColor, 100);
+    animationPlayer.playInLoop(runningColor, 300);
 });
 
 app.get('/animation/dechiColor', (req, res) => {
     res.send('Running Pixel')
     const runningColor = new RunningColor(200, [ColorUtils.toColor(255, 0, 0), ColorUtils.toColor(0, 255, 0)]);
     runningColor.setNewColors([ColorUtils.toColor(155, 0, 0), ColorUtils.toColor(155, 100, 0), ColorUtils.toColor(69, 67, 67)]);
-    animationPlayer.playInLoop(runningColor, 100);
+    animationPlayer.playInLoop(runningColor, 300);
 });
 
 app.get('/animation/bouncing', (req, res) => {
@@ -70,7 +70,7 @@ app.post('/bpm', (req, res) => {
     const interval = Math.round(1000.0 * (60 / req.body.bpm));
     console.log(interval)
     const pulse = new Pulse(255, 0, 0);
-    animationPlayer.playInLoop(pulse, interval);
+    animationPlayer.repeatAnimation(pulse, 50, interval);
     res.send(req.body.bpm);
 });
 
@@ -81,7 +81,7 @@ app.get('/animation/pulse', (req, res) => {
     const blue = req.body.blue;
     const pulse = new Pulse(255, 0, 0);
     pulse.setColor(red, green, blue);
-    animationPlayer.playInLoop(pulse, 100);
+    animationPlayer.playInLoop(pulse, 300);
 });
 
 app.listen(port, () => {
