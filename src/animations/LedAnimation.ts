@@ -27,7 +27,7 @@ export abstract class LedAnimation {
         LedAnimation.ledConfig = ledConfig;
     }
 
-    static clearCurrentAnimation():void {
+    protected clearCurrentAnimation():void {
         if (LedAnimation.currentAnimation){
             clearInterval(LedAnimation.currentAnimation)
         }

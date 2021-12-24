@@ -6,6 +6,7 @@ import {LedAnimation, LedConfig} from "./animations/LedAnimation";
 import Bouncing from "./animations/Bouncing";
 import {RunningColor} from "./animations/RunningColor";
 import {Utils} from "./animations/Utils";
+import {Pulse} from "./animations/Pulse";
 
 const app = express()
 app.use(express.json())
@@ -14,7 +15,7 @@ const ledConfig = new LedConfig(150, 255);
 LedAnimation.configure(ledConfig);
 const bouncingAnimation = new Bouncing(144, 0, 0);
 const runningColor = new RunningColor(200, [Utils.toColor(255, 0, 0), Utils.toColor(0, 255, 0)]);
-
+const pulse = new Pulse(255, 0, 0);
 
 app.get('/animation/runningPixel', (req, res) => {
     res.send('Running Pixel')
@@ -65,6 +66,15 @@ app.post('/bpm', (req, res) => {
     runningColor.setNewColors([Utils.toColor(155, 100, 0), Utils.toColor(0, 0, 0)]);
     runningColor.play();
     res.send(req.body.bpm);
+});
+
+app.get('/animation/pulse', (req, res) => {
+    res.send(req.body)
+    const red = req.body.red;
+    const green = req.body.green;
+    const blue = req.body.blue;
+    pulse.setColor(red, green, blue);
+    pulse.play();
 });
 
 app.listen(port, () => {

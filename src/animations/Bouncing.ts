@@ -1,7 +1,7 @@
 // @ts-ignore
 import ws281x from "rpi-ws281x";
 import {LedAnimation} from "./LedAnimation";
-import {Utils} from "./Utils";
+import {ColorUtils} from "./ColorUtils";
 
 class Bouncing extends LedAnimation {
     currentFill = 0;
@@ -14,7 +14,7 @@ class Bouncing extends LedAnimation {
 
     constructor(red: number, green: number, blue: number) {
         super();
-        this.color = Utils.toColor(red, green, blue);
+        this.color = ColorUtils.toColor(red, green, blue);
         this.red = red;
         this.green = green;
         this.blue = blue;
@@ -38,7 +38,7 @@ class Bouncing extends LedAnimation {
 
             ws281x.render(pixels);
         } else {
-            LedAnimation.clearCurrentAnimation();
+            this.clearCurrentAnimation();
             LedAnimation.currentAnimation = setInterval((() => this.emptyAnimation()), Math.round(this.emptyTime / LedAnimation.ledConfig.leds));
         }
 
@@ -60,14 +60,14 @@ class Bouncing extends LedAnimation {
 
             ws281x.render(pixels);
         } else {
-            LedAnimation.clearCurrentAnimation();
+            this.clearCurrentAnimation();
         }
 
 
     }
 
     play() {
-        LedAnimation.clearCurrentAnimation();
+        this.clearCurrentAnimation();
         LedAnimation.currentAnimation = setInterval((() => this.fillAnimation()), Math.round(this.fillTime / LedAnimation.ledConfig.leds));
     }
 }
