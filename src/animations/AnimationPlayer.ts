@@ -15,7 +15,7 @@ export class AnimationPlayer {
         this.clearCurrentlyPlayingAnimation();
         this.currentPlayingAnimation = animation;
         this.currentTimer = setInterval(() => {
-            if (this.currentPlayingAnimation.play()) {
+            if (this.currentPlayingAnimation && this.currentPlayingAnimation.play()) {
                 this.clearCurrentlyPlayingAnimation();
             }
         }, interval);
