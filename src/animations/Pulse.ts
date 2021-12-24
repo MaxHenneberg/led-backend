@@ -27,7 +27,6 @@ export class Pulse extends LedAnimation {
 
     public play(): boolean {
         const sinProgress = Math.sin(this.progress % Math.PI);
-        console.log(sinProgress);
         const pixels = new Uint32Array(LedAnimation.ledConfig.leds);
         const color = ColorUtils.toColor(
             Math.round(this.red * sinProgress),
@@ -38,8 +37,7 @@ export class Pulse extends LedAnimation {
         ws281x.render(pixels);
         this.progress += 0.2;
 
-        if (this.progress > (Math.PI * 0.9)) {
-            console.log('finished');
+        if (this.progress > (Math.PI * 0.8)) {
             return true;
         }else{
             return false;
