@@ -3,7 +3,6 @@ import {LedAnimation} from "./LedAnimation";
 export class AnimationPlayer {
     private currentTimer: NodeJS.Timer;
     private currentPlayingAnimation: LedAnimation;
-    private interval: number;
 
     public play(animation: LedAnimation) {
         this.clearCurrentlyPlayingAnimation();
@@ -18,12 +17,13 @@ export class AnimationPlayer {
             if (this.currentPlayingAnimation.play()) {
                 this.clearCurrentlyPlayingAnimation();
             }
-        }, this.interval);
+        }, interval);
     }
 
     private clearCurrentlyPlayingAnimation() {
         if (this.currentTimer) {
             clearInterval(this.currentTimer);
+            this.currentPlayingAnimation.onClear();
         }
     }
 
