@@ -11,7 +11,7 @@ export class Pulse extends LedAnimation {
 
     private static PROGRESS_PER_TICK = 0.2;
     private static FINISHED_PERCENTAGE = 0.8;
-    private static INITIAL_PERCENTAGE = 0.1;
+    private static INITIAL_PERCENTAGE = 0.0;
 
     constructor(colors: RGB[]) {
         super();
@@ -27,14 +27,10 @@ export class Pulse extends LedAnimation {
             Math.sin((Math.PI * Pulse.FINISHED_PERCENTAGE - this.progress) % Math.PI)
         const pixels = new Uint32Array(LedAnimation.ledConfig.leds);
         const currentColor = this.colors[this.colorProgress % this.colors.length];
-        let prevColor = this.colors[(this.colorProgress - 1) % this.colors.length];
-        if(!prevColor) {
-            prevColor = currentColor;
-        }
         const color = ColorUtils.toColor(
-            Math.min(255, Math.round((currentColor.red * sinProgress) + (prevColor.red * prevSinProgress))),
-            Math.min(255, Math.round((currentColor.green * sinProgress) + (prevColor.green * prevSinProgress))),
-            Math.min(255, Math.round((currentColor.blue * sinProgress) + (prevColor.blue * prevSinProgress))));
+            Math.min(255, Math.round((currentColor.red * sinProgress))),
+            Math.min(255, Math.round((currentColor.green * sinProgress))),
+            Math.min(255, Math.round((currentColor.blue * sinProgress))));
 
         ColorUtils.fillArray(color, LedAnimation.ledConfig.leds, pixels);
         ws281x.render(pixels);
