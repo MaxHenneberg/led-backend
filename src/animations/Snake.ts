@@ -25,13 +25,13 @@ export class Snake extends LedAnimation {
         const pixels = new Uint32Array(LedAnimation.ledConfig.leds);
         this.drawTail(pixels);
         ws281x.render(pixels);
+        this.handleProgress();
 
-        if (this.progress >= LedAnimation.ledConfig.leds) {
+        if (this.reachedDestination()) {
             this.colorProgress++;
             this.direction *= -1;
             return true;
         } else {
-            this.progress++;
             return false;
         }
     }
