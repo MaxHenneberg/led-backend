@@ -71,7 +71,7 @@ app.post('/bpm', (req, res) => {
     console.log(interval)
     const pulse = new Pulse(255, 0, 0);
     animationPlayer.repeatAnimation(pulse, 50, interval);
-    res.send(req.body.bpm);
+    res.send(200);
 });
 
 app.get('/animation/pulse', (req, res) => {
