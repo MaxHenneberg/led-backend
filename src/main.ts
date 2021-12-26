@@ -5,7 +5,7 @@ import {LedAnimation, LedConfig} from "./animations/LedAnimation";
 import Bouncing from "./animations/Bouncing";
 import {RunningColor} from "./animations/RunningColor";
 import {Pulse} from "./animations/Pulse";
-import {ColorUtils} from "./animations/ColorUtils";
+import {ColorUtils, RGB} from "./animations/ColorUtils";
 import {RunningPixel} from "./animations/RunningPixel";
 import {AnimationPlayer} from "./animations/AnimationPlayer";
 
@@ -69,18 +69,14 @@ app.get('/animation/bouncing', (req, res) => {
 app.post('/bpm', (req, res) => {
     const interval = Math.round(1000.0 * (60 / req.body.bpm));
     console.log(interval)
-    const pulse = new Pulse(255, 0, 0);
+    const pulse = new Pulse([new RGB(130, 0,0), new RGB(0,130,0)]);
     animationPlayer.repeatAnimation(pulse, 50, interval);
-    res.send(200);
+    res.sendStatus(200);
 });
 
 app.get('/animation/pulse', (req, res) => {
     res.send(req.body)
-    const red = req.body.red;
-    const green = req.body.green;
-    const blue = req.body.blue;
-    const pulse = new Pulse(255, 0, 0);
-    pulse.setColor(red, green, blue);
+    const pulse = new Pulse([new RGB(130, 0,0), new RGB(0,130,0)]);
     animationPlayer.playInLoop(pulse, 300);
 });
 
