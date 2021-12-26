@@ -25,10 +25,11 @@ export class Pulse extends LedAnimation {
         const sinProgress = Math.sin(this.progress % Math.PI);
         const pixels = new Uint32Array(LedAnimation.ledConfig.leds);
         const currentColor = this.colors[this.colorProgress % this.colors.length];
+        const prevColor = this.colors[this.colorProgress - 1 % this.colors.length]
         const color = ColorUtils.toColor(
-            Math.round(currentColor.red * sinProgress),
-            Math.round(currentColor.green * sinProgress),
-            Math.round(currentColor.blue * sinProgress));
+            Math.min(255, Math.round((currentColor.red * sinProgress) + (prevColor.red * (1 - sinProgress)))),
+            Math.min(255, Math.round((currentColor.green * sinProgress) + (prevColor.green * (1 - sinProgress)))),
+            Math.min(255, Math.round((currentColor.blue * sinProgress) + (prevColor.blue * (1 - sinProgress)))));
 
         ColorUtils.fillArray(color, LedAnimation.ledConfig.leds, pixels);
         ws281x.render(pixels);
