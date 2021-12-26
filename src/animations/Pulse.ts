@@ -29,9 +29,9 @@ export class Pulse extends LedAnimation {
         ColorUtils.fillArray(color, LedAnimation.ledConfig.leds, pixels);
         ws281x.render(pixels);
         this.progress += 0.2;
-        this.colorProgress++;
 
         if (this.progress > (Math.PI * 0.8)) {
+            this.colorProgress++;
             return true;
         } else {
             return false;
@@ -40,7 +40,6 @@ export class Pulse extends LedAnimation {
 
     public onClear() {
         this.progress = Math.PI * 0.1;
-        this.colorProgress = 0;
     }
 
 }
