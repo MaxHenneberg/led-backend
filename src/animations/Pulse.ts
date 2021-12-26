@@ -9,6 +9,10 @@ export class Pulse extends LedAnimation {
     colorProgress: number;
     progress: number;
 
+    private static PROGRESS_PER_TICK = 0.2;
+    private static FINISHED_PERCENTAGE = 0.8;
+    private static INITIAL_PERCENTAGE = 0.1;
+
     constructor(colors: RGB[]) {
         super();
         this.colors = colors;
@@ -28,9 +32,9 @@ export class Pulse extends LedAnimation {
 
         ColorUtils.fillArray(color, LedAnimation.ledConfig.leds, pixels);
         ws281x.render(pixels);
-        this.progress += 0.2;
+        this.progress += Pulse.PROGRESS_PER_TICK;
 
-        if (this.progress > (Math.PI * 0.8)) {
+        if (this.progress > (Math.PI * Pulse.FINISHED_PERCENTAGE)) {
             this.colorProgress++;
             return true;
         } else {
@@ -39,7 +43,11 @@ export class Pulse extends LedAnimation {
     }
 
     public onClear() {
-        this.progress = Math.PI * 0.1;
+        this.progress = Math.PI * Pulse.INITIAL_PERCENTAGE;
+    }
+
+    public getTicks(): number {
+        return ((Math.PI * Pulse.FINISHED_PERCENTAGE) - (Math.PI * Pulse.INITIAL_PERCENTAGE)) / Pulse.PROGRESS_PER_TICK;
     }
 
 }

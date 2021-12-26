@@ -29,4 +29,8 @@ export abstract class LedAnimation {
 
     public abstract onClear(): void;
 
+    public getTicks(): number {
+        return 0;
+    };
+
 }

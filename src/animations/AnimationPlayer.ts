@@ -21,11 +21,14 @@ export class AnimationPlayer {
         }, interval);
     }
 
-    public repeatAnimation(animation: LedAnimation, intervalAniamtion: number, intervalRepeat: number) {
+    public repeatAnimation(animation: LedAnimation, animationDuration: number, intervalRepeat: number) {
         this.clearRepeatTimer();
+        const animationInterval = Math.round(animationDuration / animation.getTicks());
+
         this.currentRepeatTimer = setInterval(
-            () => this.playInLoop(animation, intervalAniamtion), intervalRepeat)
+            () => this.playInLoop(animation, animationInterval), intervalRepeat)
     }
+
 
     private clearCurrentlyPlayingAnimation() {
         if (this.currentTimer) {

@@ -69,14 +69,14 @@ app.get('/animation/bouncing', (req, res) => {
 app.post('/bpm', (req, res) => {
     const interval = Math.round(1000.0 * (60 / req.body.bpm));
     console.log(interval)
-    const pulse = new Pulse([new RGB(130, 0,0), new RGB(0,130,0)]);
-    animationPlayer.repeatAnimation(pulse, 50, interval);
+    const pulse = new Pulse([new RGB(130, 0, 0), new RGB(0, 130, 0)]);
+    animationPlayer.repeatAnimation(pulse, interval * 0.8, interval);
     res.sendStatus(200);
 });
 
 app.get('/animation/pulse', (req, res) => {
     res.send(req.body)
-    const pulse = new Pulse([new RGB(130, 0,0), new RGB(0,130,0)]);
+    const pulse = new Pulse([new RGB(130, 0, 0), new RGB(0, 130, 0)]);
     animationPlayer.playInLoop(pulse, 300);
 });
 
