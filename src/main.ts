@@ -8,6 +8,7 @@ import {Pulse} from "./animations/Pulse";
 import {ColorUtils, RGB} from "./animations/ColorUtils";
 import {RunningPixel} from "./animations/RunningPixel";
 import {AnimationPlayer} from "./animations/AnimationPlayer";
+import {Snake} from "./animations/Snake";
 
 const app = express()
 app.use(express.json())
@@ -71,6 +72,14 @@ app.post('/bpm', (req, res) => {
     console.log(interval)
     const pulse = new Pulse([new RGB(130, 0, 0), new RGB(0, 130, 0)]);
     animationPlayer.repeatAnimation(pulse, interval * 0.8, interval);
+    res.sendStatus(200);
+});
+
+app.post('/bpmSnake', (req, res) => {
+    const interval = Math.round(1000.0 * (60 / req.body.bpm));
+    console.log(interval)
+    const snake = new Snake([new RGB(130, 0, 0), new RGB(0, 130, 0)]);
+    animationPlayer.repeatAnimation(snake, interval * 0.8, interval);
     res.sendStatus(200);
 });
 
