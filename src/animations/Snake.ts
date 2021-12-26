@@ -38,10 +38,8 @@ export class Snake extends LedAnimation {
 
     private drawTail(pixels: Uint32Array): void {
         for (let i = 0;
-             i < this.tailLength &&
-             (i * this.direction + this.progress) > 0 &&
-             (i * this.direction + this.progress) < LedAnimation.ledConfig.leds; i++) {
-            const currentPixel = (i * this.direction + this.progress);
+             i < this.tailLength; i++) {
+            const currentPixel = (i * this.direction * -1) + this.progress;
             if (currentPixel > 0 && currentPixel < LedAnimation.ledConfig.leds) {
                 pixels[currentPixel] = ColorUtils.RGBtoColor(this.colors[this.colorProgress % this.colors.length].fade((this.tailLength - i) / this.tailLength));
             } else {
