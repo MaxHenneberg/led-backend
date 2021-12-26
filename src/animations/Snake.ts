@@ -18,7 +18,7 @@ export class Snake extends LedAnimation {
         this.colorProgress = 0;
         this.progress = 0;
         this.direction = 1;
-        this.tailLength = 15;
+        this.tailLength = 30;
     }
 
     public play(): boolean {
