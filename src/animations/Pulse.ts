@@ -27,7 +27,7 @@ export class Pulse extends LedAnimation {
             Math.sin((Math.PI * Pulse.FINISHED_PERCENTAGE - this.progress) % Math.PI)
         const pixels = new Uint32Array(LedAnimation.ledConfig.leds);
         const currentColor = this.colors[this.colorProgress % this.colors.length];
-        const prevColor = this.colors[this.colorProgress - 1 % this.colors.length]
+        const prevColor = this.colors[(this.colorProgress - 1) % this.colors.length];
         const color = ColorUtils.toColor(
             Math.min(255, Math.round((currentColor.red * sinProgress) + (prevColor.red * prevSinProgress))),
             Math.min(255, Math.round((currentColor.green * sinProgress) + (prevColor.green * prevSinProgress))),
