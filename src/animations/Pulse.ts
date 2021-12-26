@@ -10,7 +10,7 @@ export class Pulse extends LedAnimation {
     progress: number;
 
     private static PROGRESS_PER_TICK = 0.2;
-    private static FINISHED_PERCENTAGE = 0.8;
+    private static FINISHED_PERCENTAGE = 1.0;
     private static INITIAL_PERCENTAGE = 0.0;
 
     constructor(colors: RGB[]) {
