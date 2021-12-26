@@ -24,7 +24,7 @@ export class AnimationPlayer {
     public repeatAnimation(animation: LedAnimation, animationDuration: number, intervalRepeat: number) {
         this.clearRepeatTimer();
         const animationInterval = Math.round(animationDuration / animation.getTicks());
-
+        console.log(animationInterval);
         this.currentRepeatTimer = setInterval(
             () => this.playInLoop(animation, animationInterval), intervalRepeat)
     }
