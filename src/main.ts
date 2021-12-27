@@ -76,6 +76,12 @@ app.post('/bpm', (req, res) => {
     res.sendStatus(200);
 });
 
+app.post('/setColor', (req, res) => {
+    const colors = req.body.colors;
+    animationPlayer.setColorForCurrentAnimation(colors);
+    res.sendStatus(200);
+});
+
 const sidePulse = new SidePulse([new RGB(70, 0, 0), new RGB(70, 70, 0), new RGB(0, 70, 0),new RGB(0, 70, 70), new RGB(0, 0, 70)], 77);
 
 app.post('/bpmLoudness', (req, res) => {

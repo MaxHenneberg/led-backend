@@ -1,4 +1,5 @@
 import {LedAnimation} from "./LedAnimation";
+import {RGB} from "./ColorUtils";
 
 export class AnimationPlayer {
     private currentRepeatTimer: NodeJS.Timer;
@@ -29,6 +30,12 @@ export class AnimationPlayer {
         console.log(animationInterval);
         this.currentRepeatTimer = setInterval(
             () => this.playInLoop(animation, animationInterval), intervalRepeat)
+    }
+
+    public setColorForCurrentAnimation(color: RGB[]) {
+        if (this.currentPlayingAnimation) {
+            this.currentPlayingAnimation.setColor(color);
+        }
     }
 
 
