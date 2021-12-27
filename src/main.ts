@@ -70,7 +70,7 @@ app.get('/animation/bouncing', (req, res) => {
 app.post('/bpm', (req, res) => {
     const interval = Math.round(1000.0 * (60 / req.body.bpm));
     console.log(interval)
-    const pulse = new Pulse([new RGB(130, 0, 0), new RGB(0, 130, 0)]);
+    const pulse = new Pulse([new RGB(70, 0, 0), new RGB(0, 70, 0)]);
     animationPlayer.repeatAnimation(pulse, interval * 0.8, interval);
     res.sendStatus(200);
 });
