@@ -33,4 +33,8 @@ export abstract class LedAnimation {
         return 0;
     };
 
+    public setColor(): void {
+
+    }
+
 }
