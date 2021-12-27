@@ -18,10 +18,6 @@ export class SidePulse extends LedAnimation {
         this.length = length;
     }
 
-    public setColor() {
-
-    }
-
     private fillLengthWithColor(start: number, length: number, colors: RGB[], pixels: Uint32Array) {
         for (let i = start; i < length; i++) {
             pixels[i] = ColorUtils.RGBtoColor(colors[i % colors.length]);
@@ -52,6 +48,14 @@ export class SidePulse extends LedAnimation {
 
     public getTicks(): number {
         return Math.PI / SidePulse.TICK_INCREASE;
+    }
+
+    public setMaxProgress(maxProgress: number) {
+        this.length = maxProgress;
+    }
+
+    public setColor(colors: RGB[]) {
+        this.color = colors;
     }
 
 }

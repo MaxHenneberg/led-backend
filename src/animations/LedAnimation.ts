@@ -1,3 +1,5 @@
+import {RGB} from "./ColorUtils";
+
 export class LedConfig {
     leds: number;
     brightness: number;
@@ -33,7 +35,11 @@ export abstract class LedAnimation {
         return 0;
     };
 
-    public setColor(): void {
+    public setColor(colors: RGB[]): void {
+
+    }
+
+    public setMaxProgress(maxProgress: number): void {
 
     }
 
