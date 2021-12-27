@@ -79,7 +79,7 @@ app.post('/bpm', (req, res) => {
 app.post('/bpmLoudness', (req, res) => {
     const interval = Math.round(1000.0 * (60 / req.body.bpm));
     const loudness = req.body.loudness ? req.body.loudness : 0;
-    const loudnessPercentage = Math.pow(Math.max(1, (20 + loudness))/20, 2);
+    const loudnessPercentage = Math.pow(Math.max(3, (20 + loudness))/20, 2);
     console.log(interval)
     const sidePulse = new SidePulse([new RGB(70, 0, 0), new RGB(70, 70, 0), new RGB(0, 70, 0),new RGB(0, 70, 70), new RGB(0, 0, 70)], loudnessPercentage * 77);
     animationPlayer.repeatAnimation(sidePulse, interval * 0.8, interval);
