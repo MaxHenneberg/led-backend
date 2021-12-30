@@ -14,7 +14,7 @@ import {SidePulse} from "./animations/SidePulse";
 const app = express()
 app.use(express.json())
 const port = 3000
-const ledConfig = new LedConfig(256, 255);
+const ledConfig = new LedConfig(20, 255);
 LedAnimation.configure(ledConfig);
 
 const animationPlayer = new AnimationPlayer();
