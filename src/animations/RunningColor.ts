@@ -1,4 +1,4 @@
-import {LedAnimation} from "./LedAnimation";
+import {LedAnimation, LedConfig} from "./LedAnimation";
 // @ts-ignore
 import ws281x from "rpi-ws281x";
 
@@ -10,6 +10,7 @@ export class RunningColor extends LedAnimation {
     constructor(interval: number, colors: number[]) {
         super();
         this.pixels = new Uint32Array(LedAnimation.ledConfig.leds);
+        console.log(LedAnimation.ledConfig.leds);
         this.interval = interval;
         this.colors = colors;
         this.offset = 0;
